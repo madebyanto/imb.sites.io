@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contattaci</title>
+    <style>
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+      
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #6B8EE0;
+        }
+
+        .widget {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Esempi di stili per titoli, paragrafi e bottoni */
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <h2>Contattaci</h2>
+        <p>Per contattarci, invia un email a italianmoderationsbots@gmail.com</p>
+        <button onclick="gmail_homeFunzione()">Vai a Google Mail</button>
+    </div>
+</body>
+</html>
+<script>
+  function gmail_homeFunzione() {
+  window.location.href = "https://mail.google.com";
+}
+</script>
