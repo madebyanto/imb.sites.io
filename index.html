@@ -1,60 +1,39 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ItalianModerationsBOT</title>
     <link rel="icon" href="imb_image_by_auro.ico">
+</html>
     <style>
-        /* Stile per la modalità chiara */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+        
         body {
-            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #6B8EE0;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Modalità scura per il corpo della pagina */
-        .dark-mode {
-            background-color: #1c1c1c;
-            color: #e0e0e0;
-        }
-
-        /* Stile del widget */
         .widget {
             background-color: white;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* Modalità scura per il widget */
-        .dark-mode .widget {
-            background-color: #001239; /* Blu scuro */
-            color: #e0e0e0;
-            box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.2);
         }
 
         h2 {
             color: #333;
         }
 
-        .dark-mode h2 {
-            color: #f5f5f5;
-        }
-
         p {
             color: #666;
-        }
-
-        .dark-mode p {
-            color: #b3b3b3;
         }
 
         button {
@@ -64,95 +43,63 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            transition-duration: 0.4s;
-        }
+             transition-duration: 0.4s;
+  cursor: pointer;
+}
 
-        .dark-mode button {
-            background-color: #1a73e8;
-            color: #f5f5f5;
-        }
-
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 5px 10px rgba(0, 0, 255, 0.5);
-        }
+button:hover {
+  transform: scale(1.1);
+     box-shadow: 0px 5px 10px rgba(0, 0, 255, 0.5);
+}
 
         button:active {
-            transform: scale(0.5);
-        }
+  transform: scale(0.5); 
+}
 
-        img {
-            border-radius: 25px;
-        }
-
-        /* Bottone per cambiare modalità */
-        .toggle-mode {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #444;
-            color: #f5f5f5;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .dark-mode .toggle-mode {
-            background-color: #bbb;
-            color: #333;
-        }
+            
+img {
+    border-radius: 25px;
+    
+}
+        
     </style>
 </head>
 <body>
-    <button class="toggle-mode" onclick="toggleDarkMode()">Cambia modalità</button>
     <div class="widget">
         <h2>Sicurezza e moderazione. Tutto su ItalianModerationsBOT.</h2>
         <p>Benvenuto nella pagina web di ItalianModerationsBOT! Clicca qui sotto per scoprirne di più.</p>
-        <button onclick="di_piuFunzione()">Scopri di più</button>
+        <button onclick="di_piùFunzione()">Scopri di più</button>
         <button onclick="chi_siamoFunzione()">Chi siamo</button>
-        <button onclick="contattaciFunzione()">Contattaci</button>
-        <hr>
+         <button onclick="contattaciFunzione()">Contattaci</button>
+<hr>
         <h2>Embed UX 2: In arrivo</h2>
         <img src="embed_gui_2_1.png" width="550" height="300">
         <p>Embed UX è la nostra interfaccia embed semplice, personalizzabile e intuitiva.<br>
-            Abbiamo parlato di Embed UX 2 nell'Made by Aura 2024. Puoi recuperarla qui sotto</p>
+        Abbiamo parlato di Embed UX 2 nell'Made by aura 2024. Puoi recuperarla qui sotto</p>
         <button onclick="mbaura2024_ytFunzione()">Recupera Made by Aura 2024 (YouTube)</button>
     </div>
-
-    <script>
-        // Funzione per navigazione delle pagine
-        function di_piuFunzione() {
-            window.location.href = "di_più.html";
-        }
-
-        function chi_siamoFunzione() {
-            window.location.href = "chi_siamo.html";
-        }
-
-        function contattaciFunzione() {
-            window.location.href = "contattaci.html";
-        }
-
-        function mbaura2024_ytFunzione() {
-            window.location.href = "https://youtu.be/JFh_376wmI4?si=Jy_yOJTSwzdf88eM";
-        }
-
-        // Funzione per cambiare modalità e salvare in localStorage
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-            // Salva la scelta dell'utente nel localStorage
-            const isDarkMode = document.body.classList.contains("dark-mode");
-            localStorage.setItem("darkModeEnabled", isDarkMode);
-        }
-
-        // Verifica localStorage per attivare la modalità scura se già abilitata
-        window.onload = function() {
-            const darkModeEnabled = localStorage.getItem("darkModeEnabled") === "true";
-            if (darkModeEnabled) {
-                document.body.classList.add("dark-mode");
-            }
-        }
-    </script>
 </body>
 </html>
+<script>
+function di_piùFunzione() {
+  window.location.href = "di_più.html";
+}
+</script>
+
+<script>
+function chi_siamoFunzione() {
+  window.location.href = "chi_siamo.html";
+}
+</script>
+
+<script>
+function contattaciFunzione() {
+  window.location.href = "contattaci.html";
+}
+</script>
+
+<script>
+function mbaura2024_ytFunzione() {
+  window.location.href = "https://youtu.be/JFh_376wmI4?si=Jy_yOJTSwzdf88eM";
+}
+</script>
