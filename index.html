@@ -9,12 +9,19 @@
         body {
             font-family: 'Poppins', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #6B8EE0;
-            flex-direction: column;
+        }
+
+        .header-image {
+            width: 50%; /* Imposta la larghezza al 50% del widget */
+            max-width: 300px; /* Imposta un limite massimo di larghezza, opzionale */
+            margin-bottom: 20px;
+            border-radius: 20%;
         }
 
         .widget {
@@ -23,12 +30,8 @@
             padding: 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
-        }
-
-        .widget img {
-            border-radius: 20%;
-            margin-bottom: 20px;
-            width: 150px; /* Adatta la larghezza come preferisci */
+            width: 80%; /* Imposta la larghezza del widget */
+            max-width: 600px; /* Imposta una larghezza massima */
         }
 
         h2 {
@@ -64,8 +67,8 @@
     </style>
 </head>
 <body>
+    <img src="benvenuto.png" alt="Benvenuto" class="header-image">
     <div class="widget">
-        <img src="benvenuto.png" alt="Benvenuto">
         <h2>Sicurezza e moderazione. Tutto su ItalianModerationsBOT.</h2>
         <p>Benvenuto nella pagina web di ItalianModerationsBOT! Clicca qui sotto per scoprirne di più.</p>
         <button onclick="di_piùFunzione()">Scopri di più</button>
