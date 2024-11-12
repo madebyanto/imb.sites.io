@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: #6B8EE0;
+            flex-direction: column;
         }
 
         .widget {
@@ -22,6 +23,12 @@
             padding: 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
+        }
+
+        .widget img {
+            border-radius: 20%;
+            margin-bottom: 20px;
+            width: 150px; /* Adatta la larghezza come preferisci */
         }
 
         h2 {
@@ -52,12 +59,13 @@
         }
 
         iframe {
-            border-radius: 25px
+            border-radius: 25px;
         }
     </style>
 </head>
 <body>
     <div class="widget">
+        <img src="benvenuto.png" alt="Benvenuto">
         <h2>Sicurezza e moderazione. Tutto su ItalianModerationsBOT.</h2>
         <p>Benvenuto nella pagina web di ItalianModerationsBOT! Clicca qui sotto per scoprirne di più.</p>
         <button onclick="di_piùFunzione()">Scopri di più</button>
