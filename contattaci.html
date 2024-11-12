@@ -81,10 +81,6 @@
             transform: scale(0.5);
         }
 
-        img {
-            border-radius: 25px;
-        }
-
         /* Bottone per cambiare modalità */
         .toggle-mode {
             position: absolute;
@@ -108,15 +104,18 @@
     <button class="toggle-mode" onclick="toggleDarkMode()">Cambia modalità</button>
     <div class="widget">
         <h2>Contattaci</h2>
-        <p>Per contattarci, invia un'email a <a href="mailto:aurastudio.italia@gmail.com">aurastudio.italia@gmail.com</a></p>
+        <p>Per contattarci, invia un’email a aurastudio.italia@gmail.com</p>
         <button onclick="gmail_homeFunzione()">Vai a Google Mail</button>
     </div>
 
     <script>
+        function gmail_homeFunzione() {
+            window.location.href = "https://mail.google.com";
+        }
+
         // Funzione per cambiare modalità e salvare in localStorage
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
-            // Salva la scelta dell'utente nel localStorage
             const isDarkMode = document.body.classList.contains("dark-mode");
             localStorage.setItem("darkModeEnabled", isDarkMode);
         }
@@ -127,11 +126,6 @@
             if (darkModeEnabled) {
                 document.body.classList.add("dark-mode");
             }
-        }
-
-        // Funzione per navigare a Google Mail
-        function gmail_homeFunzione() {
-            window.location.href = "https://mail.google.com";
         }
     </script>
 </body>
