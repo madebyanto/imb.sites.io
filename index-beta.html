@@ -6,24 +6,9 @@
   <title>ItalianModerationsBOT — Moderazione & Sicurezza</title>
   <meta name="description" content="ItalianModerationsBOT — strumenti di moderazione per server Discord in italiano. Embed UX, moderazione automatica e report." />
 
-  <!-- Favicon (sostituisci con imb.ico) -->
   <link rel="icon" href="imb.ico" type="image/x-icon" />
 
-  <!-- Font: Poppins (progressive enhancement: il sito funziona anche senza) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- NOTE SUI FILE ICONA:
-       - imb_logo.png  -> logo header (48x48 o 96x96)
-       - home.png      -> icona Home (22x22)
-       - info.png      -> icona Info (22x22)
-       - team.png      -> icona Team (22x22)
-       - contact.png   -> icona Contattaci (22x22)
-       - imb_mod.png   -> icona Moderazione per card (120x120)
-       - imb_report.png-> icona Report per card (120x120)
-       - imb_support.png-> icona Supporto per card (120x120)
-       - discord.png,tiktok.png,instagram.png -> icone social (40x40)
-       Metti questi file nella stessa cartella del file HTML.
-  -->
 
   <style>
   /* =======================================================
@@ -322,16 +307,8 @@
   </style>
 </head>
 <body>
-  <!-- =======================================================================================
-       Overlay (mostrato quando la sidebar è aperta)
-       ======================================================================================= -->
   <div id="overlay" class="overlay" aria-hidden="true"></div>
 
-  <!-- =======================================================================================
-       Sidebar (mobile) - usa file .png per le icone (vedi commenti in head)
-       - aria-hidden toggled via JS
-       - contiene link che chiudono la sidebar quando cliccati
-       ======================================================================================= -->
   <nav id="sidebar" class="sidebar" aria-hidden="true" aria-label="Menu principale">
     <button id="closeMenu" class="close-menu" aria-label="Chiudi menu">&times;</button>
 
@@ -349,7 +326,7 @@
       <a href="chi_siamo.html" role="menuitem"><img src="team.png" alt="Team">Chi siamo</a>
       <a href="contattaci.html" role="menuitem"><img src="contact.png" alt="Contattaci">Contattaci</a>
       <a href="https://discord.gg/tctmBsMnfk" role="menuitem"><img src="discord.png" alt="Discord">Unisciti al Discord</a>
-      <a href="https://github.com" role="menuitem"><img src="home.png" alt="Repo">Repository</a>
+      <a href="https://github.com" role="menuitem"><img src="home.png" alt="Repository GitHub">Repository GitHub</a>
     </div>
 
     <div style="margin-top:auto;font-size:13px;color:var(--muted-2)">
@@ -358,11 +335,6 @@
     </div>
   </nav>
 
-  <!-- =======================================================================================
-       HEADER / NAVBAR
-       - logo usa imb_logo.png (sostituire)
-       - open-menu controlla sidebar
-       ======================================================================================= -->
   <header class="main-header container" role="banner">
     <div class="brand">
       <div class="logo" aria-hidden="true">
@@ -375,7 +347,6 @@
     </div>
 
     <div style="display:flex;align-items:center;gap:12px">
-      <!-- topLinks verrà renderizzato in larghezza via JS -->
       <nav id="topLinks" aria-label="Link principali" style="display:none"></nav>
 
       <button id="openMenu" class="menu-btn" aria-expanded="false" aria-controls="sidebar" aria-label="Apri menu">
@@ -386,12 +357,8 @@
     </div>
   </header>
 
-  <!-- =======================================================================================
-       MAIN CONTENT
-       ======================================================================================= -->
   <main role="main">
 
-    <!-- HERO -->
     <section class="hero container" aria-labelledby="hero-title">
       <div class="eyebrow">Tool &amp; Moderazione</div>
       <h1 id="hero-title">Benvenutə in <strong style="color:var(--text)">ItalianModerationsBOT</strong></h1>
@@ -404,7 +371,6 @@
       </div>
     </section>
 
-    <!-- WHY -->
     <section class="two-columns container" aria-labelledby="why-title">
       <div class="content" id="why-title">
         <h2>Perché <strong>ItalianModerationsBOT</strong></h2>
@@ -417,12 +383,10 @@
       </div>
 
       <div class="media">
-        <!-- preview grafica come SVG fallback; sostituisci con immagine reale se vuoi -->
         <img class="preview" src="imb_mod.png" alt="Anteprima moderazione" loading="lazy">
       </div>
     </section>
 
-    <!-- SERVICES / CARDS -->
     <section class="container" aria-labelledby="services">
       <h2 id="services" style="text-align:center;margin-bottom:12px">I nostri servizi</h2>
 
@@ -447,7 +411,6 @@
       </div>
     </section>
 
-    <!-- EMBED UX WIDGET -->
     <section class="container" aria-labelledby="embed-ux" style="padding-bottom:56px;">
       <div style="max-width:1000px;margin:0 auto;text-align:center">
         <h2 id="embed-ux">Embed UX 2 — Anteprima</h2>
@@ -476,9 +439,6 @@
 
   </main>
 
-  <!-- =======================================================================================
-       FOOTER
-       ======================================================================================= -->
   <footer class="site-footer">
     <div class="container">
       <h3 style="margin:0;color:var(--text)">Seguici sui social</h3>
@@ -491,11 +451,6 @@
     </div>
   </footer>
 
-  <!-- =======================================================================================
-       JAVASCRIPT: Gestione sidebar, overlay, focus-trap, scroll-lock, progressive enhancements
-       - Tutto in IIFE per isolare lo scope
-       - Molti controlli difensivi per evitare errori runtime
-       ======================================================================================= -->
   <script>
   (function () {
     'use strict';
@@ -514,25 +469,19 @@
     function removeClass(el, c) { if(el && el.classList.contains(c)) el.classList.remove(c); }
     function hasClass(el, c) { return el && el.classList.contains(c); }
 
-    /* -------------------- scroll lock implementation -------------------- */
+    /* -------------------- scroll lock implementation (FIXED per iOS) -------------------- */
     var scrollLock = {
       locked: false,
-      scrollY: 0,
       lock: function () {
         if (this.locked) return;
-        this.scrollY = window.scrollY || window.pageYOffset || 0;
-        document.documentElement.style.top = '-' + this.scrollY + 'px';
-        document.documentElement.style.position = 'fixed';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
         this.locked = true;
       },
       unlock: function () {
         if (!this.locked) return;
-        document.documentElement.style.position = '';
-        document.documentElement.style.top = '';
-        document.body.style.position = '';
-        window.scrollTo(0, this.scrollY || 0);
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
         this.locked = false;
       }
     };
@@ -695,9 +644,5 @@
   })();
   </script>
 
-  <!-- =======================================================================================
-       End of file
-       ======================================================================================= -->
-
-</body>
+  </body>
 </html>
