@@ -8,73 +8,98 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
+/* --- VARIABILI GLOBALI --- */
 :root {
     --gradient-start: #4da6ff;
     --gradient-end: #66ccff;
-    --text-color: #FFFFFF;
+    --text-color: #fff;
     --primary-btn-text-color: #0044cc;
     --font-family: 'Poppins', sans-serif;
+    --dark-bg: #003366;
 }
 
-/* --- GLOBAL --- */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* --- RESET BASE --- */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html {
+    scroll-behavior:smooth;
+}
 body {
     font-family: var(--font-family);
-    background: linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
     color: var(--text-color);
-    overflow-x: hidden;
+    background: linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
+    overflow-x:hidden;
 }
-.container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
 
 /* --- HEADER --- */
 .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 25px;
-    position: sticky;
-    top: 0;
-    width: 100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 25px;
+    position:sticky;
+    top:0;
+    width:100%;
+    z-index:1000;
     background-color: rgba(0,102,204,0.4);
     backdrop-filter: blur(10px);
-    z-index: 1000;
+    -webkit-backdrop-filter: blur(10px);
 }
-.logo img { max-height: 50px; border-radius: 50%; }
+.logo img {
+    max-height:50px;
+    border-radius:50%;
+}
 .menu-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
 }
-.menu-btn span { display: block; width: 30px; height: 3px; background-color: var(--text-color); border-radius: 3px; }
+.menu-btn span {
+    display:block;
+    width:30px;
+    height:3px;
+    background-color: var(--text-color);
+    border-radius:3px;
+}
 
 /* --- SIDEBAR --- */
 .sidebar {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    max-width: 400px;
-    height: 100%;
+    top:0;
+    right:-100%;
+    width:75%;
+    max-width:400px;
+    height:100%;
     background: linear-gradient(to bottom right,var(--gradient-start),var(--gradient-end));
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    transition: right 0.4s ease;
-    padding: 30px;
-    z-index: 1001;
+    box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding:30px;
+    z-index:1001;
 }
-.sidebar.open { right: 0; }
+.sidebar.open { right:0; }
 .close-menu-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: none;
-    border: none;
+    position:absolute;
+    top:20px;
+    right:25px;
+    background:none;
+    border:none;
     color: var(--text-color);
-    font-size: 40px;
-    font-weight: 300;
-    cursor: pointer;
+    font-size:40px;
+    font-weight:300;
+    cursor:pointer;
 }
 .sidebar ul { list-style:none; margin-top:80px; }
 .sidebar ul li a {
@@ -85,11 +110,16 @@ body {
     display:block;
     padding:15px 0;
 }
-.sidebar ul li a img { width:18px; height:18px; margin-right:8px; vertical-align:middle; }
+.sidebar ul li a img {
+    width:18px;
+    height:18px;
+    margin-right:8px;
+    vertical-align:middle;
+}
 
 /* --- HERO --- */
 .hero {
-    padding: 60px 0;
+    padding:60px 0;
     text-align:center;
 }
 .hero h1 { font-size:2.8rem; font-weight:800; margin-bottom:20px; }
@@ -104,13 +134,32 @@ body {
     border:2px solid transparent;
     transition: transform 0.2s, background-color 0.2s;
 }
-.btn-primary { background:#fff; color:var(--primary-btn-text-color); }
-.btn-primary:hover { background:#e0e0e0; transform:translateY(-2px); }
-.btn-secondary { background:transparent; border:2px solid #fff; color:#fff; }
-.btn-secondary:hover { background:#fff; color:var(--primary-btn-text-color); }
+.btn-primary { background-color: var(--text-color); color: var(--primary-btn-text-color); }
+.btn-primary:hover { background-color:#e0e0e0; transform:translateY(-2px); }
+.btn-secondary { background-color:transparent; border-color: var(--text-color); color: var(--text-color); }
+.btn-secondary:hover { background-color: var(--text-color); color: var(--primary-btn-text-color); transform:translateY(-2px); }
 
-/* --- CARD GRID --- */
-.card-grid { display:grid; gap:25px; grid-template-columns:1fr; margin-top:40px; }
+/* --- HIGHLIGHT --- */
+.highlight { color:#0044cc; font-weight:700; }
+
+/* --- SEZIONI --- */
+section { padding:60px 0; }
+.two-columns {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+}
+.two-columns.reverse { flex-direction:column-reverse; }
+.two-columns > div { flex:1; }
+.two-columns img { max-width:250px; border-radius:20px; }
+
+/* --- CARDS --- */
+.card-grid {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:25px;
+}
 .card {
     background: rgba(255,255,255,0.3);
     border-radius:20px;
@@ -123,6 +172,7 @@ body {
 .card h3 { font-size:1.5rem; font-weight:700; margin:15px 0 10px; }
 .card p { font-size:0.9rem; margin-bottom:20px; }
 .card img { width:120px; height:120px; object-fit:cover; border-radius:15px; margin-bottom:10px; }
+.card iframe { border-radius:15px; width:100%; max-width:550px; height:250px; }
 
 /* --- FOOTER --- */
 footer { padding:40px 0; text-align:center; }
@@ -130,7 +180,7 @@ footer { padding:40px 0; text-align:center; }
 .social-icon {
     width:40px; height:40px;
     display:flex; justify-content:center; align-items:center;
-    background:#0044cc;
+    background: var(--dark-bg);
     border-radius:10px;
     color:#fff;
     font-size:20px;
@@ -138,13 +188,14 @@ footer { padding:40px 0; text-align:center; }
     text-decoration:none;
 }
 .social-icon:hover { background:#66ccff; transform:scale(1.1); }
+.footer-credit { margin-top:20px; font-size:0.9rem; }
 
 /* --- RESPONSIVE --- */
 @media(min-width:768px){
     .card-grid { grid-template-columns:repeat(3,1fr); }
-    .two-columns { display:flex; flex-direction:row; align-items:center; text-align:left; gap:40px; }
+    .two-columns { flex-direction:row; text-align:left; }
     .two-columns.reverse { flex-direction:row; }
-    .two-columns img { max-width:100%; height:auto; border-radius:20px; }
+    .two-columns img { max-width:100%; height:auto; }
 }
 </style>
 </head>
@@ -178,37 +229,38 @@ footer { padding:40px 0; text-align:center; }
     </div>
 </section>
 
-<!-- Cards / Embed -->
-<section class="card-grid container">
-    <div class="card">
-        <img src="embed.png" alt="Embed UX">
-        <h3>Embed UX 2</h3>
-        <p>Interfaccia semplice, personalizzabile e intuitiva per moderazione e gestione Discord.</p>
-        <iframe width="100%" height="250" src="https://www.youtube.com/embed/JFh_376wmI4?si=x3ONU_fjqvApXZkU" frameborder="0" allowfullscreen></iframe>
+<!-- Perché ItalianModerationsBOT -->
+<section class="two-columns container">
+    <div class="why-content">
+        <h2>Perché <span class="highlight">ItalianModerationsBOT</span></h2>
+        <p>ItalianModerationsBOT è sviluppato per fornire strumenti di moderazione affidabili e facili da usare per i server Discord italiani. Sicurezza, automazione e gestione intuitiva.</p>
+    </div>
+    <div class="why-visual">
+        <img src="imb_hero.png" alt="Icona moderazione">
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <h2>Seguici sui social!</h2>
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fa-brands fa-discord"></i></a>
-            <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <p class="footer-credit">ItalianModerationsBOT<br>Made by Aura Studio Italia</p>
+<!-- Servizi -->
+<section class="card-grid container">
+    <div class="card">
+        <img src="imb_moderation.png" alt="Moderazione">
+        <h3>Moderazione Automatica</h3>
+        <p>Strumenti avanzati per filtrare messaggi, link e contenuti inappropriati.</p>
     </div>
-</footer>
+    <div class="card">
+        <img src="imb_embed.png" alt="Embed UX">
+        <h3>Embed UX</h3>
+        <p>Creazione di embed personalizzati e intuitivi per messaggi e notifiche.</p>
+    </div>
+    <div class="card">
+        <img src="imb_logs.png" alt="Logs">
+        <h3>Logs e Report</h3>
+        <p>Tracciamento completo delle attività e report dettagliati per ogni server.</p>
+    </div>
+</section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('sidebar');
-    const openMenuBtn = document.getElementById('open-menu');
-    const closeMenuBtn = document.getElementById('close-menu');
-    openMenuBtn.addEventListener('click',()=>{sidebar.classList.add('open');});
-    closeMenuBtn.addEventListener('click',()=>{sidebar.classList.remove('open');});
-});
-</script>
-</body>
-</html>
+<!-- Embed UX -->
+<section class="card container">
+    <h3>Embed UX 2</h3>
+    <p>Interfaccia semplice, personalizzabile e intuitiva per moderazione e gestione Discord.</p>
+    <iframe src="https://www.youtube.com/embed/JFh_376wmI4?si=x3ONU_fjqvApXZkU" frameborder="0" allowfullscreen
