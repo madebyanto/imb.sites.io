@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ItalianModerationsBOT</title>
+<link rel="icon" href="imb_image_by_auro.ico">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root {
+    --gradient-start: #4da6ff;
+    --gradient-end: #66ccff;
+    --text-color: #FFFFFF;
+    --primary-btn-text-color: #0044cc;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- GLOBAL --- */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
+
+/* --- HEADER --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,102,204,0.4);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+.logo img { max-height: 50px; border-radius: 50%; }
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.menu-btn span { display: block; width: 30px; height: 3px; background-color: var(--text-color); border-radius: 3px; }
+
+/* --- SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 400px;
+    height: 100%;
+    background: linear-gradient(to bottom right,var(--gradient-start),var(--gradient-end));
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.4s ease;
+    padding: 30px;
+    z-index: 1001;
+}
+.sidebar.open { right: 0; }
+.close-menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.sidebar ul { list-style:none; margin-top:80px; }
+.sidebar ul li a {
+    color: var(--text-color);
+    text-decoration:none;
+    font-size:1.2rem;
+    font-weight:600;
+    display:block;
+    padding:15px 0;
+}
+.sidebar ul li a img { width:18px; height:18px; margin-right:8px; vertical-align:middle; }
+
+/* --- HERO --- */
+.hero {
+    padding: 60px 0;
+    text-align:center;
+}
+.hero h1 { font-size:2.8rem; font-weight:800; margin-bottom:20px; }
+.hero p { font-size:1rem; line-height:1.6; margin-bottom:30px; }
+.hero-buttons a {
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:700;
+    margin:5px;
+    border:2px solid transparent;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-primary { background:#fff; color:var(--primary-btn-text-color); }
+.btn-primary:hover { background:#e0e0e0; transform:translateY(-2px); }
+.btn-secondary { background:transparent; border:2px solid #fff; color:#fff; }
+.btn-secondary:hover { background:#fff; color:var(--primary-btn-text-color); }
+
+/* --- CARD GRID --- */
+.card-grid { display:grid; gap:25px; grid-template-columns:1fr; margin-top:40px; }
+.card {
+    background: rgba(255,255,255,0.3);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.card h3 { font-size:1.5rem; font-weight:700; margin:15px 0 10px; }
+.card p { font-size:0.9rem; margin-bottom:20px; }
+.card img { width:120px; height:120px; object-fit:cover; border-radius:15px; margin-bottom:10px; }
+
+/* --- FOOTER --- */
+footer { padding:40px 0; text-align:center; }
+.social-icons { display:flex; justify-content:center; gap:10px; margin-top:20px; }
+.social-icon {
+    width:40px; height:40px;
+    display:flex; justify-content:center; align-items:center;
+    background:#0044cc;
+    border-radius:10px;
+    color:#fff;
+    font-size:20px;
+    transition:0.3s;
+    text-decoration:none;
+}
+.social-icon:hover { background:#66ccff; transform:scale(1.1); }
+
+/* --- RESPONSIVE --- */
+@media(min-width:768px){
+    .card-grid { grid-template-columns:repeat(3,1fr); }
+    .two-columns { display:flex; flex-direction:row; align-items:center; text-align:left; gap:40px; }
+    .two-columns.reverse { flex-direction:row; }
+    .two-columns img { max-width:100%; height:auto; border-radius:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav id="sidebar" class="sidebar">
+    <button id="close-menu" class="close-menu-btn">&times;</button>
+    <ul>
+        <li><a href="#"><img src="imb_icon.png" alt="Home"> Home</a></li>
+        <li><a href="di_più.html"><img src="info_icon.png" alt="Info"> Di più</a></li>
+        <li><a href="chi_siamo.html"><img src="team_icon.png" alt="Chi siamo"> Chi siamo</a></li>
+        <li><a href="contattaci.html"><img src="contact_icon.png" alt="Contattaci"> Contattaci</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="main-header">
+    <div class="logo"><img src="imb_image_by_auro.ico" alt="Logo"></div>
+    <button id="open-menu" class="menu-btn"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Hero -->
+<section class="hero container">
+    <h1>Benvenutə in <span class="highlight">ItalianModerationsBOT</span></h1>
+    <p>Sicurezza, moderazione e strumenti utili per la tua community Discord.</p>
+    <div class="hero-buttons">
+        <a href="di_più.html" class="btn btn-secondary">Scopri di più</a>
+        <a href="chi_siamo.html" class="btn btn-primary">Chi siamo</a>
+        <a href="contattaci.html" class="btn btn-secondary">Contattaci</a>
+    </div>
+</section>
+
+<!-- Cards / Embed -->
+<section class="card-grid container">
+    <div class="card">
+        <img src="embed.png" alt="Embed UX">
+        <h3>Embed UX 2</h3>
+        <p>Interfaccia semplice, personalizzabile e intuitiva per moderazione e gestione Discord.</p>
+        <iframe width="100%" height="250" src="https://www.youtube.com/embed/JFh_376wmI4?si=x3ONU_fjqvApXZkU" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <h2>Seguici sui social!</h2>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-credit">ItalianModerationsBOT<br>Made by Aura Studio Italia</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    openMenuBtn.addEventListener('click',()=>{sidebar.classList.add('open');});
+    closeMenuBtn.addEventListener('click',()=>{sidebar.classList.remove('open');});
+});
+</script>
+</body>
+</html>
